@@ -8,8 +8,10 @@ vim.g.mapleader=' '
  vim.keymap.set('n', '<C-s>', ':w<CR>')
 
 
- vim.keymap.set('v', '<S-Up>', ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
- vim.keymap.set('v', '<S-Down>', ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
+ vim.keymap.set('v', '<S-k>', ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
+ vim.keymap.set('v', '<S-s>', ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
 
+ vim.keymap.set('v', '<S-k>', ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
+ vim.keymap.set('v', '<S-j>', ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
 
 

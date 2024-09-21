@@ -12,4 +12,4 @@ vim.keymap.set("n","<C-e>",ui.toggle_quick_menu)
 
 
 vim.keymap.set("n","<C-q>", function() ui.nav_prev() end)
-vim.keymap.set("n","<C-w>", function() ui.nav_next() end)
+vim.keymap.set("n","<C-d>", function() ui.nav_next() end)
