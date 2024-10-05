@@ -10,6 +10,7 @@ require("after.plugin.webicons")
 require("after.plugin.whichkey")
 require("after.plugin.lsp")
 require("after.plugin.snippit")
+require("after.plugin.lualine")
 
 --Setting section
 require("sameer.remap")

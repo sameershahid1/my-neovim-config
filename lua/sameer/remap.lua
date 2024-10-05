@@ -1,7 +1,6 @@
 local vim = vim
 
-
-vim.g.mapleader=' '
+vim.g.mapleader='<C>'
 
  --IDE Keys for common task
  vim.keymap.set('n', '<C-]>', ':Explore<CR>')

@@ -52,6 +52,15 @@ return require('packer').startup(function(use)
     })
 
     use({"rafamadriz/friendly-snippets"})
+    
+   use {
+      's1n7ax/nvim-search-and-replace',
+     config = function() require'nvim-search-and-replace'.setup() end,
+    }
 
+   use {
+     'nvim-lualine/lualine.nvim',
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+    }
 end)
 
