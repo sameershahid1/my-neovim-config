@@ -17,3 +17,7 @@ require("after.plugin.kuber")
 require("sameer.remap")
 require("sameer.packer")
 require("sameer.set")
+
+print("Hello Sameer")
+
+
