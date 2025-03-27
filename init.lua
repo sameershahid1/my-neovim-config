@@ -12,6 +12,7 @@ require("after.plugin.lsp")
 require("after.plugin.snippit")
 require("after.plugin.lualine")
 require("after.plugin.kuber")
+require("after.plugin.gh")
 
 --Setting section
 require("sameer.remap")
