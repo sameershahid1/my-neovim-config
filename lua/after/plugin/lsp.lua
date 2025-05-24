@@ -10,8 +10,8 @@ local lsp_attach = function(client, bufnr)
     end
 
     vim.keymap.set('n', '<C-b>', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
-    vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
     vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
+    vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
     vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
     vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
     vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
@@ -82,8 +82,10 @@ require('mason-lspconfig').setup({
         "golangci_lint_ls",
         "templ"
     },
+    automatic_enable = true,
     handlers = {
         function(server_name)
+            print(server_name)
             if server_name == "lua_ls" then
                 local opts = {
                     settings = {

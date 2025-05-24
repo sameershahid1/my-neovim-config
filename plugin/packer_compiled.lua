@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/sameer/.cache/nvim/packer_hererocks/2.1.1713484068/share/lua/5.1/?.lua;/home/sameer/.cache/nvim/packer_hererocks/2.1.1713484068/share/lua/5.1/?/init.lua;/home/sameer/.cache/nvim/packer_hererocks/2.1.1713484068/lib/luarocks/rocks-5.1/?.lua;/home/sameer/.cache/nvim/packer_hererocks/2.1.1713484068/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/sameer/.cache/nvim/packer_hererocks/2.1.1713484068/lib/lua/5.1/?.so"
+local package_path_str = "/home/sameer/.cache/nvim/packer_hererocks/2.1.1741730670/share/lua/5.1/?.lua;/home/sameer/.cache/nvim/packer_hererocks/2.1.1741730670/share/lua/5.1/?/init.lua;/home/sameer/.cache/nvim/packer_hererocks/2.1.1741730670/lib/luarocks/rocks-5.1/?.lua;/home/sameer/.cache/nvim/packer_hererocks/2.1.1741730670/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/sameer/.cache/nvim/packer_hererocks/2.1.1741730670/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -190,16 +190,15 @@ _G.packer_plugins = {
     path = "/home/sameer/.local/share/nvim/site/pack/packer/start/propster",
     url = "/home/sameer/Desktop/propster"
   },
-  ["rose-pine"] = {
-    config = { "\27LJ\2\n9\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\26colorscheme rose-pine\bcmd\bvim\0" },
-    loaded = true,
-    path = "/home/sameer/.local/share/nvim/site/pack/packer/start/rose-pine",
-    url = "https://github.com/rose-pine/neovim"
-  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/sameer/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  ["themer.lua"] = {
+    loaded = true,
+    path = "/home/sameer/.local/share/nvim/site/pack/packer/start/themer.lua",
+    url = "https://github.com/themercorp/themer.lua"
   },
   ["vim-fugitive"] = {
     loaded = true,
@@ -214,22 +213,18 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: propster
-time([[Config for propster]], true)
-try_loadstring("\27LJ\2\nö\1\0\0\6\0\f\0\0286\0\0\0006\2\1\0'\3\2\0B\0\3\3\14\0\0\0X\2\v€6\2\3\0009\2\4\2'\4\5\0\18\5\1\0&\4\5\0046\5\3\0009\5\6\0059\5\a\0059\5\b\5B\2\3\1X\2\n€6\2\3\0009\2\4\2'\4\t\0006\5\3\0009\5\6\0059\5\a\0059\5\n\5B\2\3\0019\2\v\1B\2\1\1K\0\1\0\19setup_commands\tINFO\"Propster loaded successfully!\nERROR\vlevels\blog\30Failed to load propster: \vnotify\bvim\rpropster\frequire\npcall\0", "config", "propster")
-time([[Config for propster]], false)
--- Config for: nvim-search-and-replace
-time([[Config for nvim-search-and-replace]], true)
-try_loadstring("\27LJ\2\nE\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\28nvim-search-and-replace\frequire\0", "config", "nvim-search-and-replace")
-time([[Config for nvim-search-and-replace]], false)
--- Config for: rose-pine
-time([[Config for rose-pine]], true)
-try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\26colorscheme rose-pine\bcmd\bvim\0", "config", "rose-pine")
-time([[Config for rose-pine]], false)
 -- Config for: mini.icons
 time([[Config for mini.icons]], true)
 try_loadstring("\27LJ\2\n<\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\15mini.icons\frequire\0", "config", "mini.icons")
 time([[Config for mini.icons]], false)
+-- Config for: nvim-search-and-replace
+time([[Config for nvim-search-and-replace]], true)
+try_loadstring("\27LJ\2\nE\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\28nvim-search-and-replace\frequire\0", "config", "nvim-search-and-replace")
+time([[Config for nvim-search-and-replace]], false)
+-- Config for: propster
+time([[Config for propster]], true)
+try_loadstring("\27LJ\2\nö\1\0\0\6\0\f\0\0286\0\0\0006\2\1\0'\3\2\0B\0\3\3\14\0\0\0X\2\v€6\2\3\0009\2\4\2'\4\5\0\18\5\1\0&\4\5\0046\5\3\0009\5\6\0059\5\a\0059\5\b\5B\2\3\1X\2\n€6\2\3\0009\2\4\2'\4\t\0006\5\3\0009\5\6\0059\5\a\0059\5\n\5B\2\3\0019\2\v\1B\2\1\1K\0\1\0\19setup_commands\tINFO\"Propster loaded successfully!\nERROR\vlevels\blog\30Failed to load propster: \vnotify\bvim\rpropster\frequire\npcall\0", "config", "propster")
+time([[Config for propster]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
