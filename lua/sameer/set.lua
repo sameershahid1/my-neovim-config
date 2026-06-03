@@ -1,3 +1,6 @@
+vim.o.timeoutlen = 300
+vim.o.ttimeoutlen = 0
+
 vim.opt.guicursor = ""
 
 vim.opt.nu = true
@@ -30,3 +33,7 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 
 vim.g.mapleader = ";"
+
+
+vim.o.foldmethod = "indent"
+vim.o.foldlevel = 99

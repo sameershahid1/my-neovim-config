@@ -1,11 +1,10 @@
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "javascript", "typescript", "tsx" , "go", "gomod", "gosum", "gotmpl" ,"c", "python","php" , "prisma", "json", "html","css" ,"lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
-  sync_install = false,
-  auto_install = true,
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = false,
-  },
-}
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function(args)
+    pcall(vim.treesitter.start, args.buf)
+  end,
+})
+
+vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+
 
 

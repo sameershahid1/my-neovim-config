@@ -79,7 +79,6 @@ require('mason-lspconfig').setup({
         "pyright",
         "html",
         "cssls",
-        "golangci_lint_ls",
         "templ"
     },
     automatic_enable = true,

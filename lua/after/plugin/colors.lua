@@ -1,120 +1,113 @@
 local function ColorNeovim()
-    local themer          = require("themer")
+  local ok, themer = pcall(require, "themer")
+  if not ok then
+    vim.notify("themer.lua is not installed", vim.log.levels.WARN)
+    return
+  end
 
-    local italic          = { style = "italic" }
-    local bold            = { style = "bold" }
-    local under           = { style = "underline" }
+  local styles = {}
 
-    -- Syntax element styles
-    local syntax_elements = {
-        "function", "functionbuiltin", "variable", "variableBuiltIn", "parameter",
-        "include", "identifier", "keyword", "keywordBuiltIn", "struct", "string",
-        "field", "type", "typeBuiltIn", "property", "comment", "punctuation",
-        "constructor", "operator", "constant", "constantBuiltIn", "todo",
-        "character", "conditional", "number", "statement", "uri",
-    }
+  local syntax_elements = {
+    "function",
+    "functionbuiltin",
+    "variable",
+    "variableBuiltIn",
+    "parameter",
+    "include",
+    "identifier",
+    "keyword",
+    "keywordBuiltIn",
+    "struct",
+    "string",
+    "field",
+    "type",
+    "typeBuiltIn",
+    "property",
+    "comment",
+    "punctuation",
+    "constructor",
+    "operator",
+    "constant",
+    "constantBuiltIn",
+    "todo",
+    "character",
+    "conditional",
+    "number",
+    "statement",
+    "uri",
+  }
 
-    local styles          = {}
-    for _, name in ipairs(syntax_elements) do
-        styles[name] = italic
-    end
+  for _, name in ipairs(syntax_elements) do
+    styles[name] = { style = "italic" }
+  end
 
-    -- Diagnostic styles
-    styles.diagnostic = {
-        underline = {
-            error = under,
-            warn = under,
-            info = under,
-            hint = under,
-        },
-        virtual_text = {
-            error = italic,
-            warn = italic,
-            info = italic,
-            hint = italic,
-        },
-    }
+  themer.setup({
+    colorscheme = "kurai",
+    transparent = true,
+    dim_inactive = true,
+    terminal_colors = true,
+    styles = styles,
+  })
 
-    -- Optional: Plugin-specific styles
-    styles.plugins = {
-        TelescopePromptPrefix = bold,
-        TelescopeSelection = bold,
-        CmpItemAbbrMatch = bold,
-        CmpItemKindFunction = italic,
-        GitSignsAdd = italic,
-        GitSignsChange = italic,
-        GitSignsDelete = italic,
-    }
+  vim.diagnostic.config({
+    virtual_text = {
+      spacing = 2,
+      prefix = "▎",
+    },
+    underline = true,
+    signs = true,
+    severity_sort = true,
+  })
 
-    -- Themer setup
-    themer.setup({
-        colorscheme = "kurai",
-        transparent = true,
-        enable_installer = true,
-        dim_inactive = true,    -- Dims unfocused windows
-        terminal_colors = true, -- Applies theme to :terminal
-        styles = styles,
-        overrides = {
-            -- Custom highlights (optional)
-            CursorLine = { bg = "#2a2a2a" },
-            StatusLine = { bold = true },
-            NormalFloat = { bg = "none" },
-            FloatBorder = { fg = "#999999" },
-        },
-    })
+  local highlights = {
+    DiagnosticVirtualTextError = { fg = "#ff6c6b", italic = true },
+    DiagnosticVirtualTextWarn = { fg = "#ECBE7B", italic = true },
+    DiagnosticVirtualTextInfo = { fg = "#51afef", italic = true },
+    DiagnosticVirtualTextHint = { fg = "#98be65", italic = true },
+
+    LineNrAbove = { fg = "#c0c0c0" },
+    LineNrBelow = { fg = "#c0c0c0" },
+    CursorLineNr = { fg = "#ffffff", bold = true },
+    CursorLine = { bg = "#2a2a2a" },
+
+    StatusLine = { bold = true },
+
+    NormalFloat = { bg = "NONE" },
+    FloatBorder = { fg = "#44475a", bg = "NONE" },
+    FloatTitle = { fg = "#c0c0c0", italic = true },
+    PmenuBorder = { fg = "#44475a", bg = "NONE" },
+
+    TelescopeNormal = { bg = "NONE" },
+    TelescopePromptNormal = { bg = "NONE" },
+    TelescopeResultsNormal = { bg = "NONE" },
+    TelescopePreviewNormal = { bg = "NONE" },
+
+    TelescopeBorder = { fg = "#44475a", bg = "NONE" },
+    TelescopePromptBorder = { fg = "#44475a", bg = "NONE" },
+    TelescopeResultsBorder = { fg = "#44475a", bg = "NONE" },
+    TelescopePreviewBorder = { fg = "#44475a", bg = "NONE" },
+
+    TelescopeTitle = { fg = "#c0c0c0", bg = "NONE", italic = true },
+    TelescopePromptPrefix = { fg = "#ffffff", bold = true },
+    TelescopeMatching = { fg = "#ffffff" },
+    TelescopeResultsIdentifier = { fg = "#ffffff", bg = "NONE" },
+    TelescopeSelection = { bg = "#2a2a2a", fg = "#ffffff", bold = true },
+    TelescopeSelectionCaret = { fg = "#ffffff", bold = true },
+
+    CmpItemAbbrMatch = { bold = true },
+    CmpItemKindFunction = { italic = true },
+
+    GitSignsAdd = { italic = true },
+    GitSignsChange = { italic = true },
+    GitSignsDelete = { italic = true },
+  }
+
+  for group, opts in pairs(highlights) do
+    vim.api.nvim_set_hl(0, group, opts)
+  end
 end
 
 ColorNeovim()
-
-
--- Style line numbers for transparent background
-vim.cmd([[
-  highlight LineNrAbove guifg=#c0c0c0
-  highlight LineNrBelow guifg=#c0c0c0
-  highlight CursorLineNr guifg=#ffffff gui=bold
-]])
-
--- Make floating windows transparent
-vim.cmd([[
-  highlight NormalFloat guibg=NONE
-  highlight FloatBorder guibg=NONE
-]])
-
-vim.cmd([[
-  highlight NormalFloat guibg=NONE
-  highlight FloatBorder guifg=#44475a guibg=NONE
-  highlight FloatTitle guifg=#c0c0c0 gui=italic
-  highlight PmenuBorder guifg=#44475a guibg=NONE
-]])
-
-
-vim.cmd([[
-  " Transparent backgrounds
-  highlight TelescopeNormal guibg=NONE
-  highlight TelescopePromptNormal guibg=NONE
-  highlight TelescopeResultsNormal guibg=NONE
-  highlight TelescopePreviewNormal guibg=NONE
-
-  " Borders (soft gray)
-  highlight TelescopeBorder guifg=#44475a guibg=NONE
-  highlight TelescopePromptBorder guifg=#44475a guibg=NONE
-  highlight TelescopeResultsBorder guifg=#44475a guibg=NONE
-  highlight TelescopePreviewBorder guifg=#44475a guibg=NONE
-
-  " Title and prompt prefix
-  highlight TelescopeTitle guifg=#c0c0c0 guibg=NONE gui=italic
-  highlight TelescopePromptPrefix guifg=#ffffff
-
-  " Matching text inside results (like fuzzy matches)
-  highlight TelescopeMatching guifg=#ffffff gui=NONE
-
-  " 👇 File names (default text)
-  highlight TelescopeResultsIdentifier guifg=#ffffff guibg=NONE gui=NONE
-
-  " 👇 Selected file name (bold white on soft bg)
-  highlight TelescopeSelection guibg=#2a2a2a guifg=#ffffff gui=bold
-  highlight TelescopeSelectionCaret guifg=#ffffff gui=bold
-]])
 
 
 
